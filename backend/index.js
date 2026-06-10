@@ -41,7 +41,7 @@ app.use(cors({
 
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
-    baseURL: "http://192.168.50.237:11434/v1"
+    baseURL: process.env.MY_HOSTING_PAGE
 })
 
 
