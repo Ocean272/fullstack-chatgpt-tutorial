@@ -20,17 +20,17 @@ h1 {
   background-color: #242424;
 }
 main{
-  max-width: 500px;
+  max-width: 700px;
   margin: auto;
 }
 p{
   background-color: darkslategray;
-  max-width: 70%;
-  padding: 15px;
-  border-radius: 50px;
+  max-width: 100%;
+  padding: 10px;
+  border-radius: 10px;
 }
 p span{
-  margin: 5px;
+  margin: 3px;
 }
 p span:first-child{
   margin-right: 0;
@@ -40,7 +40,28 @@ p span:first-child{
   margin-left: 30%;
   display: flex;
   flex-direction: row-reverse;
+  max-width: 80%; 
+  
+  /* CRITICAL: Forces long words, links, or strings to break and wrap */
+  overflow-wrap: break-word;
+  word-break: break-word;
+  
+  /* Prevents horizontal layout spillover */
+  overflow: hidden;
 }
+
+.assistant_msg pre, .assistant_msg code {
+  background-color: #f4f4f4;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: monospace;
+  
+  /* CRITICAL: Adds a clean scrollbar to code blocks if they are too wide */
+  max-width: 80%;
+  overflow-x: auto; 
+  white-space: pre-wrap;
+}
+
 .hide {
   visibility: hidden;
   display: none;
@@ -55,8 +76,21 @@ input{
   height: 40px;
   border: none;
   padding: 10px;
+  border-radius: 4px;
   font-size: 1.2rem;
 }
 input:focus{
   outline: none;
+}
+
+button{
+  padding: 10px 15px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }

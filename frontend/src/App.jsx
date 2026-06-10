@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -37,23 +38,32 @@ function App() {
       });
   };
 
+  const clearHistory = () => {
+    setChats([]);
+
+    setMsg("");
+  }
+
   return (
     <main>
       <h1>FullStack Chat AI Tutorial</h1>
-
+      <button
+        onClick={clearHistory}
+      >
+        Clear History
+      </button>
       <section>
         {chats && chats.length
           ? chats.map((chat, index) => (
-              <p
+              <div
                 key={index}
-                className={chat.role === "user" ? "user_msg" : ""}
+                className={chat.role === "user" ? "user_msg" : "assistant_msg"}
               >
                 <span>
-                  <b>{chat.role.toUpperCase()}</b>
-                  <span>:</span>
-                  <span>{chat.content}</span>
+                  {/* <b>{chat.role.toUpperCase()}</b> */}
+                  <ReactMarkdown>{chat.content}</ReactMarkdown>
                 </span>
-              </p>
+              </div>
             ))
           : ""}
       </section>
